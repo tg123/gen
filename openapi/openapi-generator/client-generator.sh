@@ -95,7 +95,7 @@ kubeclient::generator::generate_client() {
         -e GENERATE_APIS="${GENERATE_APIS}" \
         -e OPENAPI_SKIP_BASE_INTERFACE="${OPENAPI_SKIP_BASE_INTERFACE}" \
         -e HIDE_GENERATION_TIMESTAMP="${HIDE_GENERATION_TIMESTAMP}" \
-        -e LIBRARY="${LIBRARY}" \
+        -e LIBRARY="${LIBRARY:-}" \
         -e USERNAME="${USERNAME}" \
         -e REPOSITORY="${REPOSITORY}" \
         -v "${output_dir}:/output_dir" \

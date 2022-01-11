@@ -21,32 +21,9 @@
             <goal>exec</goal>
           </goals>
           <configuration>
-            <executable>git</executable>
-            <arguments>
-              <argument>clone</argument>
-              <argument>https://github.com/kubernetes-client/csharp.git</argument>
-              <argument>/tmp/csrepo</argument>
-            </arguments>
+            <executable>true</executable> <!-- do nothing, csharp compiles swagger.json into code -->
           </configuration>
         </execution>      
-        <execution>
-          <id>generate</id>
-          <phase>generate-sources</phase>
-          <goals>
-            <goal>exec</goal>
-          </goals>
-          <configuration>
-            <executable>dotnet</executable>
-            <workingDirectory>/tmp/csrepo/gen/KubernetesGenerator/</workingDirectory>
-            <arguments>
-              <argument>run</argument>
-              <argument>--project</argument>
-              <argument>KubernetesGenerator.csproj</argument>
-              <argument>${generator.output.path}</argument>
-              <argument>${generator.output.path}</argument>
-            </arguments>
-          </configuration>
-        </execution>
       </executions>
     </plugin>
     </plugins>

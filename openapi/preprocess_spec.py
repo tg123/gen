@@ -23,6 +23,8 @@ from collections import OrderedDict
 
 import urllib3
 
+urllib3.disable_warnings()
+
 # these four constants are shown as part of this example in []:
 # "[watch]Pod[List]" is the deprecated version of "[list]Pod?[watch]=True"
 WATCH_OP_PREFIX = "watch"
@@ -112,7 +114,7 @@ def strip_delete_collection_operation_watch_params(op, parent):
 
 
 def strip_401_response(operation, _):
-    if operation.has_key('responses'):
+    if 'responses' in operation:
         operation['responses'].pop('401', None)
         if len(operation['responses']) == 0:
             operation['responses']['200'] = { 'description': 'OK' }
@@ -236,8 +238,6 @@ def preserved_primitives_for_language(client_language):
     elif client_language == "haskell-http-client":
         return ["intstr.IntOrString", "resource.Quantity"]
     elif client_language == "typescript":
-        return ["intstr.IntOrString"]
-    elif client_language == "c":
         return ["intstr.IntOrString"]
     else:
         return []
